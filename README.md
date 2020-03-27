@@ -1,4 +1,4 @@
-<h1 align="center">Playing Pong with Deep Reinforcement Learning</h1>
+<h1 align="center">Playing Pong with Deep Reinforcement Learning:grinning:</h1>
 Deep learning model is presented in this project to successfully learn control policies directly from high-dimensional sensory input using reinforcement learning. The model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards.
 
 <pre>
@@ -8,7 +8,7 @@ Deep learning model is presented in this project to successfully learn control p
 </pre>
 
 
-# Introduction
+## Introduction
 
 Learning to control agents directly from high-dimensional sensory inputs like vision and speech is one of the long-standing challenges of reinforcement learning (RL). Most successful RL applications that operate on these domains have relied on hand-crafted features combined with linear value functions or policy representations. Clearly, the performance of such systems heavily relies on the quality of the feature representation.Recent advances in deep learning have made it possible to extract high-level features from raw sensory data, leading to breakthroughs in computer vision and speech recognition. These methods utilize a range of neural network architectures, including convolutional networks, multilayer perceptrons, restricted Boltzmann machines, and recurrent neural networks, and have exploited both supervised and unsupervised learning. It seems natural to ask whether similar techniques could also be beneficial for RL with sensory data.
 
@@ -17,7 +17,7 @@ association between inputs and targets found in supervised learning. Another iss
 
 This project demonstrates that a convolutional neural network can learn successful control policies from raw video data in the Pong RL environment. The network is trained with a variant of the Q-learning algorithm, with stochastic gradient descent to update the weights.To alleviate the problems of correlated data and non-stationary distributions, we use an experience replay mechanism which randomly samples previous transitions, and thereby smooths the training distribution over many past behaviors. The goal is to create a single neural network agent that is able to successfully learn to play pong. The network was not provided with any game-specific information or hand-designed visual features, and was not privy to the internal state of the emulator; it learned from nothing but the video input, the reward and terminal signals, and the set of possible actions—just as a human player would. In this project, Deep learning model is built to successfully learn control policies directly from high-dimensional sensory input using reinforcement learning. The model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards.
 
-# Algorithm
+## Algorithm
 <pre>
 <p align="center">
   <img src="./ImagesGIFs/8.PNG">
@@ -25,10 +25,10 @@ This project demonstrates that a convolutional neural network can learn successf
 </pre>
 > This algorithm is **model-free**: it solves the reinforcement learning task directly using samples from the emulator, without explicitly constructing an estimate of emulator. It is also **off-policy**: it learns about the greedy strategy while following a behaviour distribution that ensures adequate exploration of the state space. In practice, the behaviour distribution is often selected by an `EPSILON-Greedy Strategy` that follows the greedy strategy with probability `1 - EPSILON` and selects a random action with probability `EPSILON`.
  
-# Image Preprocessing
+## Image Preprocessing
 Working directly with raw RL Pong frames, which are `640 × 480` pixel images with a `128` color palette, can be computationally demanding, so we apply a basic preprocessing step aimed at reducing the input dimensionality. The raw frames are preprocessed by first converting their `RGB` representation to `gray-scale` and down-sampling it to a `80 × 80` image.For the experiments in this paper, the function `φ` from `algorithm 1` applies this preprocessing to the `last 4 frames` of a history and stacks them to produce the input to the Q-function.
 
-# Model Architecture
+## Model Architecture
 There are several possible ways of parameterizing Q using a neural network. Since Q maps history-action pairs to scalar estimates of their Q-value, the history and the action have been used as inputs to the neural network by some previous approaches.
 
 :worried: The main drawback of this type of architecture is that a separate forward pass is required to compute the Q-value of each action, resulting in a cost that scales linearly with the number of actions.
@@ -51,7 +51,7 @@ The exact architecture is shown schematically in above Figure.
 - The **final hidden layer** is fully-connected and consists of `256` rectifier units.
 - The **output layer** is a fully connected linear layer with a single output for each valid action. The number of valid actions in Pong is `3`.
 
-# List of Hyperparameters and their values
+## List of Hyperparameters and their values
 
 The values of all the hyperparameters were selected by performing an informal search on the games Pong, Breakout, Seaquest, Space Invaders and Beam Rider. We did not perform a systematic grid search owing to the high computational cost, although it is conceivable that even better results could be obtained by systematically tuning the hyperparameter values.
 
@@ -67,7 +67,7 @@ The values of all the hyperparameters were selected by performing an informal se
 | Final exploration frame | `500000` | The number of frames over which the initial value of `EPSILON` is linearly annealed to it's final value.                                          |
 | Replay start size       | `50000`  | Uniform random policy is run for this number of frames before learning starts and the resulting experience is used to populate the replay memory. |
 
-# Installation Dependencies
+## Installation Dependencies
 Download `tensorflow 1.9.0` from  [tensorflow-windows-wheel](https://github.com/fo40225/tensorflow-windows-wheel/tree/master/1.9.0/py27/CPU/sse2).
 ```
 python 2.7
@@ -75,14 +75,14 @@ tensorflow 1.9.0
 pygame 1.9.6
 opencv-python 4.2.0
 ```
-# How to Run?
+## How to Run?
 ```
 git clone https://github.com/Junth19/Playing-Pong-with-Deep-Reinforcement-Learning.git
 cd Playing-Pong-with-Deep-Reinforcement-Learning
 python DQN Brain.py
 ```
 
-# Results
+## Results
 Better results were achieved after approximately `1.38 million-time steps`, which corresponds to about `48 hours` of game time. Qualitatively, the network played at the level of an experienced human player, usually beating the game with a score of `20 − 2` .
 
 **Youtube Result:** [DQN Playing Pong](https://www.youtube.com/watch?v=OGb382EyOpg).
@@ -90,7 +90,7 @@ Better results were achieved after approximately `1.38 million-time steps`, whic
 <a href="https://www.youtube.com/watch?v=OGb382EyOpg" target="_blank"><img src="./ImagesGIFs/2.PNG"
 alt="DQN Playing Pong" width="240" height="180" border="10" /></a>
 
-# ScreenShots
+## ScreenShots
 <p align="center">
   <img src="./ImagesGIFs/2.PNG" width="240" height="180" border="10">            <img src="./ImagesGIFs/4.PNG" width="240" height="180" border="10"> 
 </p>
@@ -104,3 +104,4 @@ alt="DQN Playing Pong" width="240" height="180" border="10" /></a>
 Bellemare, Marc G, Graves, Alex, Riedmiller, Martin, Fidjeland, Andreas K, Ostrovski,
 Georg, et al. [Human-level control through deep reinforcement learning](https://www.nature.com/articles/nature14236).
 2. Mnih, Volodymyr, Kavukcuoglu, Koray, Silver, David, Graves, Alex, Antonoglou, Ioannis, Wier-stra, Daan, and Riedmiller, Martin. [Playing atari with deep reinforcement learning](https://arxiv.org/abs/1312.5602).
+3. [Guest Post: Demystifying Deep Reinforcement Learning](https://www.intel.ai/demystifying-deep-reinforcement-learning/#gs.1afy66)
