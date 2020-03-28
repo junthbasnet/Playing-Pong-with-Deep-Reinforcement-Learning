@@ -76,6 +76,8 @@ tensorflow 1.9.0
 pygame 1.9.6
 opencv-python 4.2.0
 ```
+`Programming IDE: Spyder 4.1.1`
+
 ## How to Run?
 ```
 git clone https://github.com/Junth19/Playing-Pong-with-Deep-Reinforcement-Learning.git
@@ -106,3 +108,13 @@ Bellemare, Marc G, Graves, Alex, Riedmiller, Martin, Fidjeland, Andreas K, Ostro
 Georg, et al. [Human-level control through deep reinforcement learning](https://www.nature.com/articles/nature14236).
 2. Mnih, Volodymyr, Kavukcuoglu, Koray, Silver, David, Graves, Alex, Antonoglou, Ioannis, Wier-stra, Daan, and Riedmiller, Martin. [Playing atari with deep reinforcement learning](https://arxiv.org/abs/1312.5602).
 3. Guest Post: [Demystifying Deep Reinforcement Learning](https://www.intel.ai/demystifying-deep-reinforcement-learning/#gs.1afy66)
+
+# See Next
+The goal of this project was to create a **single neural network agent that is able to successfully learn to play as many of the games as possible**. The network was not provided with any **game-specific information or hand-designed visual features, and was not privy to the internal state of the emulator**; it learned from nothing but the video input, the reward and terminal signals, and the set of possible actions—just as a human player would. Furthermore the `network architecture and all hyperparameters` used for training were similar across Pong :tennis: and FlappyBird <img src="https://github.com/Junth19/Playing-Flappy-Bird-with-Deep-Reinforcement-Learning/blob/master/assets/sprites/redbird-midflap.png">.
+
+[Playing Flappy Bird with Deep Reinforcement Learning](https://github.com/Junth19/Playing-Flappy-Bird-with-Deep-Reinforcement-Learning)
+
+<a href="https://github.com/Junth19/Playing-Flappy-Bird-with-Deep-Reinforcement-Learning">
+        <p align="center">
+  <img src="https://github.com/Junth19/Playing-Flappy-Bird-with-Deep-Reinforcement-Learning/blob/master/ImagesGIFs/FlappyGIF.gif" border="10"></p> 
+</a>
